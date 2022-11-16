@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/openjdk/jdk:11-ubuntu
+FROM openjdk:11
 
 # copy required files and fix permissions
 RUN mkdir -p /opt/sync/webapp
@@ -6,7 +6,7 @@ WORKDIR /opt/sync
 
 COPY sync.jar sync.jar
 COPY webapp/sync.war webapp/sync.war
-COPY sync*.properties /opt/sync/webapp/
+COPY sync.properties /opt/sync/
 
 RUN addgroup --system --gid 20000 cdatasync \
     && adduser --system --uid 20000 --gid 20000 cdatasync \
